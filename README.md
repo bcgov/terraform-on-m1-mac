@@ -53,15 +53,17 @@ $ curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C 
     ```
 11. To simplify the above, I would rather make use of aliases rather that remembering the above line.
     ```bash
-    ibrew='arch -x86_64 /usr/local/bin/brew'
-    mbrew='arch -arm64e /opt/homebrew/bin/brew'
+     # ~/.zshrc
+    alias ibrew='arch -x86_64 /opt/homebrew/bin/brew'
+    alias mbrew='arch -arm64e /usr/local/bin/brew'
     ```
     Thus you use `mbrew install <package name>` or `ibrew install <package name>`
 12. You can further add the path with preference to M1 version over intel with the following configurations 
     ```bash
     # ~/.zshrc
-    export PATH="/usr/local/bin:$PATH"
-    export PATH="/opt/homebrew/bin:$PATH"
+    typeset -U path;
+    path+=(/usr/local/bin);
+    path+=(/opt/homebrew/bin);
     ```
 13. If you have Python (<3.9), you may encounter some issues, to resolve them run the following:
     ```bash
